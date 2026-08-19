@@ -1,14 +1,15 @@
-/**
+﻿/**
  * PORTFOLIO SCRIPT - CARLOS RUBIANO
- * Optimizado y corregido - Diciembre 2024
+ * Optimizado y mejorado - Agosto 2026
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== CONFIGURACIÓN GLOBAL =====
+    // ===== CONFIGURACI�N GLOBAL =====
     const config = {
-        hexSize: 100,
+        hexSize: 120,
         scrollOffset: 20,
-        resizeDebounce: 200
+        resizeDebounce: 200,
+        hexMaxDistance: 2.0
     };
 
     // ===== VARIABLES GLOBALES =====
@@ -16,135 +17,148 @@ document.addEventListener('DOMContentLoaded', () => {
     let animationFrameId = null;
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
+    let lastMouseX = mouseX;
+    let lastMouseY = mouseY;
+    const MOUSE_THRESHOLD = 5;
 
-    // ===== SISTEMA DE HEXÁGONOS INTERACTIVOS =====
+    // ===== UTILIDADES =====
+    const showFeedback = (elementId, message, type = 'success') => {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        el.textContent = message;
+        el.className = type === 'success' ? 'form-success' : 'form-error';
+        el.style.display = 'block';
+        setTimeout(() => {
+            el.style.display = 'none';
+            el.className = '';
+        }, 5000);
+    };
+
+    // ===== SISTEMA DE HEX�GONOS INTERACTIVOS =====
     const createHexGrid = () => {
         const container = document.getElementById('hexagon-bg');
         if (!container) return;
-        
-        // Limpiar hexágonos existentes
+
         container.innerHTML = '';
         hexagons = [];
-        
-        // Configuración de dimensiones
+
         const HEX_SIZE = config.hexSize;
         const HEX_WIDTH = HEX_SIZE * 2;
         const HEX_HEIGHT = Math.sqrt(3) * HEX_SIZE;
-        
-        // Calcular número de hexágonos necesarios
+
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const cols = Math.ceil(viewportWidth / (HEX_WIDTH * 0.75)) + 2;
         const rows = Math.ceil(viewportHeight / (HEX_HEIGHT * 0.5)) + 2;
-        
-        // Generar grid hexagonal
+
         for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
                 const hexContainer = document.createElement('div');
                 hexContainer.className = 'hexagon';
-                
-                // Posicionamiento con offset alternado
+
                 const offsetX = (y % 2) * (HEX_WIDTH * 0.5);
                 const posX = x * HEX_WIDTH * 0.75 - offsetX;
                 const posY = y * HEX_HEIGHT * 0.5;
-                
-                // Establecer posición y tamaño
+
                 hexContainer.style.setProperty('--x', `${posX}px`);
                 hexContainer.style.setProperty('--y', `${posY}px`);
                 hexContainer.style.setProperty('--size', `${HEX_SIZE}px`);
-                
-                // Capa de highlight
+
                 const hexHighlight = document.createElement('div');
                 hexHighlight.className = 'hexagon-highlight';
                 hexContainer.appendChild(hexHighlight);
-                
-                // Añadir al DOM
+
                 container.appendChild(hexContainer);
-                
-                // Guardar referencia para efectos
+
                 hexagons.push({
                     element: hexHighlight,
                     x: posX + HEX_SIZE,
                     y: posY + HEX_HEIGHT * 0.5,
-                    size: HEX_SIZE
+                    size: HEX_SIZE,
+                    baseIntensity: Math.random() * 0.05,
+                    pulseOffset: Math.random() * Math.PI * 2
                 });
             }
         }
-        
+
         updateHighlights();
     };
 
     const handleMouseMove = (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-        }
-        animationFrameId = requestAnimationFrame(() => updateHighlights());
     };
 
     const updateHighlights = () => {
+        const time = Date.now() * 0.001;
         hexagons.forEach(hex => {
             const dx = mouseX - hex.x;
             const dy = mouseY - hex.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            let intensity = 0;
-            const maxDistance = hex.size * 1.5;
-            
+
+            let intensity = hex.baseIntensity;
+            const maxDistance = hex.size * config.hexMaxDistance;
+
             if (distance < maxDistance) {
                 intensity = 1 - (distance / maxDistance);
                 intensity = Math.pow(intensity, 1.5);
                 intensity = Math.min(1, intensity * 1.2);
             }
-            
-            hex.element.style.setProperty('--intensity', intensity);
+
+            // Pulso sutil para hex�gonos alejados
+            const pulse = Math.sin(time * 0.5 + hex.pulseOffset) * 0.02;
+            intensity = Math.max(0, intensity + pulse);
+
+            hex.element.style.setProperty('--intensity', intensity.toFixed(3));
         });
+    };
+
+    // ===== ANIMACI�N CONTINUA DE HEX�GONOS =====
+    const startHexAnimation = () => {
+        const animate = () => {
+            updateHighlights();
+            animationFrameId = requestAnimationFrame(animate);
+        };
+        animationFrameId = requestAnimationFrame(animate);
     };
 
     // ===== SISTEMA DE SCROLL SUAVE =====
     const initSmoothScroll = () => {
-        // Solo para anclas internas (#)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            // Excluir enlaces del footer que no son anclas
             if (!anchor.closest('.footer-links') || anchor.getAttribute('href') === '#') {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    
                     if (targetId === '#') return;
-                    
+
                     const target = document.querySelector(targetId);
                     if (!target) return;
-                    
+
                     const headerHeight = document.querySelector('header').offsetHeight;
                     const targetPosition = target.offsetTop - headerHeight - config.scrollOffset;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
-                    // Cerrar menú móvil si está abierto
+
                     closeMobileMenu();
                 });
             }
         });
     };
 
-    // ===== SISTEMA DE MENÚ MÓVIL =====
+    // ===== SISTEMA DE MEN� M�VIL =====
     const initMobileMenu = () => {
         const menuToggle = document.querySelector('.menu-toggle');
         const headerNav = document.querySelector('.header-nav');
-        
+
         if (menuToggle && headerNav) {
             menuToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 headerNav.classList.toggle('active');
             });
-            
-            // Cerrar menú al hacer clic en enlaces
+
             document.querySelectorAll('.header-nav a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 768) {
@@ -152,12 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
-            
-            // Cerrar menú al hacer clic fuera
+
             document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768 && 
-                    headerNav.classList.contains('active') && 
-                    !headerNav.contains(e.target) && 
+                if (window.innerWidth <= 768 &&
+                    headerNav.classList.contains('active') &&
+                    !headerNav.contains(e.target) &&
                     !menuToggle.contains(e.target)) {
                     closeMobileMenu();
                 }
@@ -172,35 +185,155 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ===== EFECTOS DE INTERACCIÓN =====
+    // ===== EFECTOS DE INTERACCI�N =====
     const initHoverEffects = () => {
-        // Efecto hover para tarjetas de proyecto
-        document.querySelectorAll('.project-card' && '.skill-card').forEach(card => {
+        document.querySelectorAll('.project-card, .skill-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
-                card.style.borderColor = '#00f0ff';
+                card.style.borderColor = 'var(--color-secondary)';
             });
-            
             card.addEventListener('mouseleave', () => {
-                card.style.borderColor = '#9d00ff';
+                card.style.borderColor = 'var(--color-primary)';
             });
         });
-        
-        // Efecto hover para botones neón
+
         document.querySelectorAll('.neon-button').forEach(button => {
             button.addEventListener('mouseenter', () => {
                 button.style.boxShadow = '0 0 10px var(--color-primary), 0 0 20px var(--color-primary)';
             });
-            
             button.addEventListener('mouseleave', () => {
                 button.style.boxShadow = 'none';
             });
         });
     };
 
+    // ===== INTERSECTION OBSERVER PARA ANIMACIONES =====
+    const initScrollAnimations = () => {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.neural-section, .project-card, .skill-card').forEach(el => {
+            observer.observe(el);
+        });
+    };
+
+    // ===== CARGA DIN�MICA DE PROYECTOS =====
+    const loadProjects = async () => {
+        const grid = document.getElementById('projects-grid');
+        if (!grid) return;
+
+        try {
+            const response = await fetch('projects.json');
+            if (!response.ok) throw new Error('No se pudo cargar projects.json');
+            const data = await response.json();
+
+            if (data.projects && Array.isArray(data.projects)) {
+                grid.innerHTML = '';
+
+                data.projects.forEach(project => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+
+                    const techStackHtml = project.stack
+                        .map(tech => `<span>${tech}</span>`)
+                        .join('');
+
+                    const demoButton = project.demoUrl && project.demoUrl !== '#'
+                        ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">VER_DEMO <i class="fas fa-external-link-alt"></i></a>`
+                        : '';
+
+                    const codeButton = project.codeUrl && project.codeUrl !== '#'
+                        ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">VER_C�DIGO <i class="fab fa-github"></i></a>`
+                        : '';
+
+                    card.innerHTML = `
+                        <div class="project-header">
+                            <h3>> ${project.title}</h3>
+                            <div class="tech-tag">${project.tech}</div>
+                        </div>
+                        <p>${project.description}</p>
+                        <div class="tech-stack">
+                            ${techStackHtml}
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code"></i> Fuente: ${project.source}</span>
+                            <span><i class="fas fa-chart-line"></i> ${project.result}</span>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            ${demoButton}
+                            ${codeButton}
+                        </div>
+                    `;
+
+                    grid.appendChild(card);
+                });
+            }
+        } catch (error) {
+            console.warn('Usando proyectos hardcodeados como fallback:', error.message);
+        }
+    };
+
+    // ===== MANEJO DEL FORMULARIO DE CONTACTO =====
+    const handleContactForm = () => {
+        const form = document.querySelector('.contact-form');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const endpoint = form.getAttribute('data-endpoint');
+            const feedbackEl = document.getElementById('form-feedback');
+
+            if (!endpoint || endpoint.includes('TU_ENDPOINT_AQUI')) {
+                showFeedback('form-feedback', 'Error: Debes configurar el endpoint de Formspree en el formulario.', 'error');
+                return;
+            }
+
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO...';
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showFeedback('form-feedback', 'Mensaje enviado correctamente. Te contactar� pronto.', 'success');
+                    form.reset();
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    showFeedback('form-feedback', `Error: ${errorData.message || 'No se pudo enviar el mensaje. Intenta de nuevo.'}`, 'error');
+                }
+            } catch (error) {
+                showFeedback('form-feedback', 'Error de conexi�n. Por favor, intenta de nuevo m�s tarde.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }
+        });
+    };
+
     // ===== SISTEMA DE RESPONSIVIDAD =====
     const initResponsiveHandlers = () => {
         let resizeTimeout;
-        
+
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
@@ -209,15 +342,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ===== INICIALIZACIÓN =====
+    // ===== EFECTO DE ESCRITURA MEJORADO =====
+    const initTypingEffect = () => {
+        document.querySelectorAll('[data-text]').forEach(element => {
+            const text = element.getAttribute('data-text');
+            element.textContent = '';
+
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 100);
+        });
+    };
+
+    // ===== INICIALIZACI�N =====
     const init = () => {
         createHexGrid();
+        startHexAnimation();
+        loadProjects();
         initSmoothScroll();
         initMobileMenu();
         initHoverEffects();
+        initScrollAnimations();
+        handleContactForm();
         initResponsiveHandlers();
-        
-        // Solo agregar eventos de mouse si no es dispositivo táctil
+        initTypingEffect();
+
         if (!('ontouchstart' in window)) {
             document.addEventListener('mousemove', handleMouseMove);
         }
@@ -231,35 +386,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Inicializar y configurar limpieza
     init();
     window.addEventListener('beforeunload', cleanup);
 
     // ===== FUNCIONALIDADES ADICIONALES =====
-    
-    // Efecto de escritura para títulos
-    document.querySelectorAll('[data-text]').forEach(element => {
-        const text = element.getAttribute('data-text');
-        element.textContent = '';
-        
-        let i = 0;
-        const typingEffect = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typingEffect);
-            }
-        }, 100);
-    });
-    
+
     // Copiar tag de Discord
     window.copyDiscordTag = function(event) {
         if (event) event.stopPropagation();
         const discordTag = "CarlosDev#0000";
         navigator.clipboard.writeText(discordTag);
-        
-        // Feedback visual
+
         const icon = event.currentTarget.querySelector('i');
         if (icon) {
             icon.classList.replace('fa-copy', 'fa-check');
@@ -269,7 +406,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== POLYFILLS Y COMPATIBILIDAD =====
-// Asegurar compatibilidad con navegadores antiguos
 if (!Element.prototype.closest) {
     Element.prototype.closest = function(s) {
         var el = this;
@@ -280,3 +416,4 @@ if (!Element.prototype.closest) {
         return null;
     };
 }
+

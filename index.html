@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <title>Carlos Rubiano | Portafolio </title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="i18n.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,14 +19,14 @@
             <i class="fas fa-bars"></i>
             </button>
             <h1 data-text="CARLOS RUBIANO">CARLOS RUBIANO</h1>
-            <p class="subtitle">INGENIERO DE SOFTWARE | DESARROLLADOR BACKEND</p>
-            <p class="neon-text">Apasionado por la tecnología y la resolución de problemas a través del desarrollo de software. Me especializo en backend y administración de entornos Linux, con un enfoque en crear soluciones eficientes y escalables.</p>
+            <p class="subtitle" data-i18n="header.subtitle">INGENIERO DE SOFTWARE | DESARROLLADOR BACKEND</p>
+            <p class="neon-text" data-i18n="header.description">Apasionado por la tecnología y la resolución de problemas a través del desarrollo de software. Me especializo en backend y administración de entornos Linux, con un enfoque en crear soluciones eficientes y escalables.</p>
             <nav class="header-nav">
-                <a href="#about"><span class="nav-icon">>></span> SOBRE MÍ</a>
-                <a href="#projects"><span class="nav-icon">>></span> PROYECTOS</a>
-                <a href="#skills"><span class="nav-icon">>></span> HABILIDADES</a>
-                <a href="#experience"><span class="nav-icon">>></span> EXPERIENCIA</a>
-                <a href="#contact"><span class="nav-icon">>></span> CONTACTO</a>
+                <a href="#about"><span class="nav-icon">>></span> <span data-i18n="nav.about">SOBRE MÍ</span></a>
+                <a href="#projects"><span class="nav-icon">>></span> <span data-i18n="nav.projects">PROYECTOS</span></a>
+                <a href="#skills"><span class="nav-icon">>></span> <span data-i18n="nav.skills">HABILIDADES</span></a>
+                <a href="#experience"><span class="nav-icon">>></span> <span data-i18n="nav.experience">EXPERIENCIA</span></a>
+                <a href="#contact"><span class="nav-icon">>></span> <span data-i18n="nav.contact">CONTACTO</span></a>
             </nav>
         </div>
     </header>
@@ -35,81 +36,29 @@
         <section>
             <br>
         </section>
-        <section id="about" class="evangelion-section">
-            <h2><span class="neon-icon">◇</span> SOBRE MÍ</h2>
+        <section id="about" class="neural-section">
+            <h2><span class="neon-icon">◇</span> <span data-i18n="about.title">SOBRE MÍ</span></h2>
             <div class="content-box">                
-                <p class="neon-text">Soy estudiante de los últimos semestres de Ingeniería Telemática y tecnólogo en Sistematización de Datos, con experiencia en el diseño, desarrollo e implementación de aplicaciones informáticas.</p>
-                <p class="neon-text">Me destaco por:</p>
+                <p class="neon-text" data-i18n="about.text1">Soy estudiante de los últimos semestres de Ingeniería Telemática y tecnólogo en Sistematización de Datos, con experiencia en el diseño, desarrollo e implementación de aplicaciones informáticas.</p>
+                <p class="neon-text" data-i18n="about.highlights">Me destaco por:</p>
                 <ul>
-                    <li class="neon-text">Habilidades en programación backend y manejo de bases de datos.</li>
-                    <li class="neon-text">Experiencia en administración de entornos Linux y validación de plataformas empresariales.</li>
-                    <li class="neon-text">Una mentalidad analítica y autodidacta, siempre en búsqueda de aprender y aplicar nuevas tecnologías.</li>
-                    <li class="neon-text">Capacidad de trabajo en equipo y liderazgo en proyectos interdisciplinarios.</li>
+                    <li class="neon-text" data-i18n="about.item1">Habilidades en programación backend y manejo de bases de datos.</li>
+                    <li class="neon-text" data-i18n="about.item2">Experiencia en administración de entornos Linux y validación de plataformas empresariales.</li>
+                    <li class="neon-text" data-i18n="about.item3">Una mentalidad analítica y autodidacta, siempre en búsqueda de aprender y aplicar nuevas tecnologías.</li>
+                    <li class="neon-text" data-i18n="about.item4">Capacidad de trabajo en equipo y liderazgo en proyectos interdisciplinarios.</li>
+                </ul>
+            </div>
+        </div>
+        </section>
+
+        <section id="projects" class="neural-section">
+            <h2><span class="neon-icon">◆</span> <span data-i18n="projects.title">PROYECTOS</span></h2>
+            <div class="projects-grid" id="projects-grid">
             </div>
         </section>
 
-        <section id="projects" class="evangelion-section">
-            <h2><span class="neon-icon">◆</span> PROYECTOS</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>> EXTRACCIÓN DE DATOS</h3>
-                        <div class="tech-tag">JAVA</div>
-                    </div>
-                    <p>Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.</p>
-                    <div class="tech-stack">
-                        <span>Java</span>
-                        <span>Regex</span>
-                        <span>POI</span>
-                    </div>
-                    <div class="project-meta">
-                        <span><i class="fas fa-code"></i> Fuente: Privada</span>
-                        <span><i class="fas fa-chart-line"></i> Resultado: +40% eficiencia</span>
-                    </div>
-                    <!--<a href="#" class="neon-button">VER_DEMO <i class="fas fa-external-link-alt"></i></a>-->
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>> OCR TESSERACT</h3>
-                        <div class="tech-tag">JAVA</div>
-                    </div>
-                    <p>Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.</p>
-                    <div class="tech-stack">
-                        <span>Java</span>
-                        <span>Tesseract OCR</span>
-                        <span>Image Processing</span>
-                    </div>
-                    <div class="project-meta">
-                        <span><i class="fas fa-code"></i> Fuente: Privada</span>
-                        <span><i class="fas fa-chart-line"></i> +25% conversión</span>
-                    </div>
-                    <!--<a href="#" class="neon-button">VER_CÓDIGO <i class="fab fa-github"></i></a>-->
-                </div>
-
-                <!--<div class="project-card">
-                    <div class="project-header">
-                        <h3>> ANALIZADOR DE DATOS</h3>
-                        <div class="tech-tag">PYTHON</div>
-                    </div>
-                    <p>Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.</p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>Pandas</span>
-                        <span>D3.js</span>
-                        <span>FastAPI</span>
-                    </div>
-                    <div class="project-meta">
-                        <span><i class="fas fa-code"></i> Uso interno</span>
-                        <span><i class="fas fa-chart-line"></i> Ahorro de 20h/semana</span>
-                    </div>
-                    <a href="#" class="neon-button">VER_DETALLES <i class="fas fa-info-circle"></i></a>
-                </div>-->
-            </div>
-        </section>
-
-        <section id="skills" class="evangelion-section">
-            <h2><span class="section-icon">></span> HABILIDADES TÉCNICAS</h2>
+        <section id="skills" class="neural-section">
+            <h2><span class="section-icon">></span> <span data-i18n="skills.title">HABILIDADES TÉCNICAS</span></h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>> JAVA</h3>
@@ -155,8 +104,8 @@
             </div>
         </section>
 
-        <section id="experience" class="evangelion-section">
-            <h2><span class="neon-icon">></span> EXPERIENCIA PROFESIONAL</h2>
+        <section id="experience" class="neural-section">
+            <h2><span class="neon-icon">></span> <span data-i18n="experience.title">EXPERIENCIA PROFESIONAL</span></h2>
             <div class="timeline-container">
                 <div class="timeline">
                     <div class="timeline-node">
@@ -189,73 +138,74 @@
             </div>
         </section>
 
-        <section id="contact" class="evangelion-section">
-            <h2><span class="neon-icon">◆</span> CONTACTO</h2>
+        <section id="contact" class="neural-section">
+            <h2><span class="neon-icon">◆</span> <span data-i18n="contact.title">CONTACTO</span></h2>
             
-            <!--<form class="contact-form">
+            <form class="contact-form" data-endpoint="https://formspree.io/f/xaewlvok">
                 <div class="form-group">
-                    <label for="name">NOMBRE</label>
-                    <input type="text" id="name" name="name" placeholder="Ej: Carlos Rubiano" required>
+                    <label for="name" data-i18n="contact.name">NOMBRE</label>
+                    <input type="text" id="name" name="name" placeholder="Ej: Carlos Rubiano" data-i18n-placeholder="contact.name_placeholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">EMAIL</label>
-                    <input type="email" id="email" name="email" placeholder="Ej: carlos@ejemplo.com" required>
+                    <label for="email" data-i18n="contact.email">EMAIL</label>
+                    <input type="email" id="email" name="email" placeholder="Ej: carlos@ejemplo.com" data-i18n-placeholder="contact.email_placeholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">MENSAJE</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    <label for="message" data-i18n="contact.message">MENSAJE</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." data-i18n-placeholder="contact.message_placeholder" required></textarea>
                 </div>
                 
                 <button type="submit" class="neon-button">
-                    <i class="fas fa-paper-plane"></i> ENVIAR MENSAJE
+                    <i class="fas fa-paper-plane"></i> <span data-i18n="contact.submit">ENVIAR MENSAJE</span>
                 </button>
-            </form>-->
+                <div id="form-feedback"></div>
+            </form>
             
             <div class="social-section">
-                <h3><span class="neon-icon">◇</span> ENCUÉNTRAME EN:</h3>
+                <h3><span class="neon-icon">◇</span> <span data-i18n="contact.find_me">ENCUÉNTRAME EN:</span></h3>
                 
                 <div class="social-list">
-                    <a href="https://linkedin.com/in/carlos-rubiano14" target="_blank" class="social-item">
+                    <a href="https://linkedin.com/in/carlos-rubiano14" target="_blank" rel="noopener noreferrer" class="social-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="social-logo">
                         <span>linkedin.com/in/carlos-rubiano14</span>
                     </a>
                     
-                    <a href="https://github.com/CarlosDev000" target="_blank" class="social-item">
+                    <a href="https://github.com/CarlosDev000" target="_blank" rel="noopener noreferrer" class="social-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" class="social-logo">
                         <span>github.com/CarlosDev000</span>
                     </a>
                     
-                    <!--<div class="social-item discord-item">
-                        <a href="https://discord.gg/tu-enlace" target="_blank" class="discord-link">
+                    <div class="social-item discord-item">
+                        <a href="https://discord.gg/tu-enlace" target="_blank" rel="noopener noreferrer" class="discord-link">
                             <img src="https://cdn-icons-png.flaticon.com/512/906/906361.png" alt="Discord" class="social-logo">
                             <span>CarlosDev#0000</span>
                         </a>
                         <button class="copy-icon" onclick="copyDiscordTag(event)">
                             <i class="fas fa-copy"></i>
                         </button>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="evangelion-footer">
+    <footer class="neural-footer">
         <div class="footer-content">
             <p class="copyright">
                 &copy; 2025 <a href="#" class="footer-link">Carlos Rubiano</a>. 
-                Todos los derechos reservados.
+                <span data-i18n="footer.rights">Todos los derechos reservados.</span>
             </p>
             
             <div class="footer-links">
-                <a href="privacy.html" class="footer-link">Política de privacidad</a>
-                <a href="terms.html" class="footer-link">Términos de uso</a>
-                <a href="sitemap.html" class="footer-link">Mapa del sitio</a>
+                <a href="privacy.html" class="footer-link" data-i18n="footer.privacy">Política de privacidad</a>
+                <a href="terms.html" class="footer-link" data-i18n="footer.terms">Términos de uso</a>
+                <a href="sitemap.html" class="footer-link" data-i18n="footer.sitemap">Mapa del sitio</a>
             </div>
             
             <a href="#contact" class="neon-button">
-                <i class="fas fa-paper-plane"></i> Contáctame
+                <i class="fas fa-paper-plane"></i> <span data-i18n="contact.footer_button">Contáctame</span>
             </a>
         </div>
     </footer>

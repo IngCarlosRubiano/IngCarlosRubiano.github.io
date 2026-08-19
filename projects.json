@@ -1,0 +1,40 @@
+﻿{
+  "projects": [
+    {
+      "id": "extraction-data",
+      "title": "EXTRACCIÓN DE DATOS",
+      "tech": "JAVA",
+      "description": "Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.",
+      "stack": ["Java", "Regex", "POI"],
+      "source": "Privada",
+      "result": "+40% eficiencia",
+      "demoUrl": "#",
+      "codeUrl": "#"
+    },
+    {
+      "id": "ocr-tesseract",
+      "title": "OCR TESSERACT",
+      "tech": "JAVA",
+      "description": "Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.",
+      "stack": ["Java", "Tesseract OCR", "Image Processing"],
+      "source": "Privada",
+      "result": "+25% conversión",
+      "demoUrl": "#",
+      "codeUrl": "#"
+    },
+    {
+      "id": "data-analyzer",
+      "title": "ANALIZADOR DE DATOS",
+      "tech": "PYTHON",
+      "description": "Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.",
+      "stack": ["Python", "Pandas", "D3.js", "FastAPI"],
+      "source": "Uso interno",
+      "result": "Ahorro de 20h/semana",
+      "demoUrl": "#",
+      "codeUrl": "#"
+    }
+  ],
+  "instructions": {
+    "addNewProject": "Para agregar un nuevo proyecto, copia uno de los objetos existentes y modifica los campos. El campo 'id' debe ser único (sin espacios, solo letras minúsculas y guiones). Los campos 'demoUrl' y 'codeUrl' pueden apuntar a URLs externas o dejarse como '#' si no aplica."
+  }
+}

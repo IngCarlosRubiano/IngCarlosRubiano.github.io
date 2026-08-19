@@ -14,28 +14,28 @@
 
     <div id="hexagon-bg"></div>
     <div class="sitemap-container">
-        <h1><span class="neon-icon">🗺️</span> MAPA DEL SITIO</h1>
+        <h1><span class="neon-icon">🗺️</span> <span data-i18n="sitemap.title">MAPA DEL SITIO</span></h1>
         
-        <h2>Páginas Principales</h2>
+        <h2 data-i18n="sitemap.main_pages">Páginas Principales</h2>
         <ul class="sitemap-list">
-            <li><a href="index.html">Inicio - Portafolio Principal</a></li>
-            <li><a href="index.html#about">Sección Sobre Mí</a></li>
-            <li><a href="index.html#projects">Sección Proyectos</a></li>
-            <li><a href="index.html#skills">Sección Habilidades</a></li>
-            <li><a href="index.html#experience">Sección Experiencia</a></li>
-            <li><a href="index.html#contact">Sección Contacto</a></li>
+            <li><a href="index.html" data-i18n="sitemap.home">Inicio - Portafolio Principal</a></li>
+            <li><a href="index.html#about" data-i18n="sitemap.about">Sección Sobre Mí</a></li>
+            <li><a href="index.html#projects" data-i18n="sitemap.projects">Sección Proyectos</a></li>
+            <li><a href="index.html#skills" data-i18n="sitemap.skills">Sección Habilidades</a></li>
+            <li><a href="index.html#experience" data-i18n="sitemap.experience">Sección Experiencia</a></li>
+            <li><a href="index.html#contact" data-i18n="sitemap.contact">Sección Contacto</a></li>
         </ul>
 
-        <h2>Documentos Legales</h2>
+        <h2 data-i18n="sitemap.legal">Documentos Legales</h2>
         <ul class="sitemap-list">
-            <li><a href="privacy.html">Política de Privacidad</a></li>
-            <li><a href="terms.html">Términos de Uso</a></li>
+            <li><a href="privacy.html" data-i18n="sitemap.privacy">Política de Privacidad</a></li>
+            <li><a href="terms.html" data-i18n="sitemap.terms">Términos de Uso</a></li>
         </ul>
 
-        <h2>Enlaces Externos</h2>
+        <h2 data-i18n="sitemap.external">Enlaces Externos</h2>
         <ul class="sitemap-list">
-            <li><a href="https://linkedin.com/in/carlos-rubiano14" target="_blank">Perfil de LinkedIn</a></li>
-            <li><a href="https://github.com/CarlosDev000" target="_blank">Perfil de GitHub</a></li>
+            <li><a href="https://linkedin.com/in/carlos-rubiano14" target="_blank" data-i18n="sitemap.linkedin">Perfil de LinkedIn</a></li>
+            <li><a href="https://github.com/CarlosDev000" target="_blank" data-i18n="sitemap.github">Perfil de GitHub</a></li>
             <!--<li><a href="https://discord.gg/tu-enlace" target="_blank">Servidor de Discord</a></li>-->
         </ul>
 
@@ -45,9 +45,12 @@
             <li><a href="assets/projects/">Carpeta de Proyectos</a></li>
         </ul>-->
 
-        <a href="index.html" class="back-button">← Volver al Portafolio</a>
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> <span data-i18n="sitemap.back">Volver al Portafolio</span></a>
     </div>
 
     <script src="scripts.js"></script>
+    <script src="i18n.js"></script>
+    <script src="i18n-extras.js"></script>
 </body>
 </html>
+
