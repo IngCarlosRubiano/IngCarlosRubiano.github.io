@@ -2,36 +2,66 @@
   "projects": [
     {
       "id": "extraction-data",
-      "title": "EXTRACCIÓN DE DATOS",
       "tech": "JAVA",
-      "description": "Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.",
       "stack": ["Java", "Regex", "POI"],
-      "source": "Privada",
-      "result": "+40% eficiencia",
       "demoUrl": "#",
-      "codeUrl": "#"
+      "codeUrl": "#",
+      "translations": {
+        "es": {
+          "title": "EXTRACCIÓN DE DATOS",
+          "description": "Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.",
+          "source": "Privada",
+          "result": "+40% eficiencia"
+        },
+        "en": {
+          "title": "DATA EXTRACTION",
+          "description": "Research and development of solutions to extract information from documents in various formats, applying Java programming techniques.",
+          "source": "Private",
+          "result": "+40% efficiency"
+        }
+      }
     },
     {
       "id": "ocr-tesseract",
-      "title": "OCR TESSERACT",
       "tech": "JAVA",
-      "description": "Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.",
       "stack": ["Java", "Tesseract OCR", "Image Processing"],
-      "source": "Privada",
-      "result": "+25% conversión",
       "demoUrl": "#",
-      "codeUrl": "#"
+      "codeUrl": "#",
+      "translations": {
+        "es": {
+          "title": "OCR TESSERACT",
+          "description": "Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.",
+          "source": "Privada",
+          "result": "+25% conversión"
+        },
+        "en": {
+          "title": "OCR TESSERACT",
+          "description": "Implementation of a document digitization system using OCR, integrating Tesseract in Java environments.",
+          "source": "Private",
+          "result": "+25% conversion"
+        }
+      }
     },
     {
       "id": "data-analyzer",
-      "title": "ANALIZADOR DE DATOS",
       "tech": "PYTHON",
-      "description": "Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.",
       "stack": ["Python", "Pandas", "D3.js", "FastAPI"],
-      "source": "Uso interno",
-      "result": "Ahorro de 20h/semana",
       "demoUrl": "#",
-      "codeUrl": "#"
+      "codeUrl": "#",
+      "translations": {
+        "es": {
+          "title": "ANALIZADOR DE DATOS",
+          "description": "Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.",
+          "source": "Uso interno",
+          "result": "Ahorro de 20h/semana"
+        },
+        "en": {
+          "title": "DATA ANALYZER",
+          "description": "Data analysis tool for processing large volumes of information with interactive visualizations and automated reports.",
+          "source": "Internal use",
+          "result": "20h/week savings"
+        }
+      }
     }
   ],
   "instructions": {

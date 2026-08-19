@@ -44,6 +44,17 @@
             
             // Experience
             'experience.title': 'EXPERIENCIA PROFESIONAL',
+
+            'experience.job1_title': 'DESARROLLADOR SOFTWARE JUNIOR',
+            'experience.job1_company': 'Bridgetech | Alfresco',
+            'experience.job1_desc': 'Participé en proyectos de investigación, documentación y pruebas de entornos Alfresco en CentOS 8, así como en soluciones de extracción de información en Java.',
+            'experience.job2_title': 'MONITOR ACADÉMICO',
+            'experience.job2_company': 'Universidad Distrital Francisco José de Caldas',
+            'experience.job2_desc': 'Brindé asistencia técnica en laboratorios de informática, liderando la migración y actualización de la página web institucional.',
+            'experience.job3_title': 'ASISTENTE BACKOFFICE',
+            'experience.job3_company': 'Atento',
+            'experience.job3_desc': 'Gestión de información, análisis de datos y apoyo a distintas áreas de la organización mediante el manejo avanzado de Excel y macros.',
+
             
             // Contact
             'contact.title': 'CONTACTO',
@@ -104,6 +115,17 @@
             
             // Experience
             'experience.title': 'PROFESSIONAL EXPERIENCE',
+
+            'experience.job1_title': 'SOFTWARE DEVELOPER JUNIOR',
+            'experience.job1_company': 'Bridgetech | Alfresco',
+            'experience.job1_desc': 'I participated in research projects, documentation, and testing of Alfresco environments on CentOS 8, as well as in information extraction solutions in Java.',
+            'experience.job2_title': 'ACADEMIC TUTOR',
+            'experience.job2_company': 'Universidad Distrital Francisco José de Caldas',
+            'experience.job2_desc': 'I provided technical assistance in computer labs, leading the migration and update of the institutional website.',
+            'experience.job3_title': 'BACKOFFICE ASSISTANT',
+            'experience.job3_company': 'Atento',
+            'experience.job3_desc': 'Information management, data analysis, and support to different areas of the organization through advanced Excel and macro handling.',
+
             
             // Contact
             'contact.title': 'CONTACT',

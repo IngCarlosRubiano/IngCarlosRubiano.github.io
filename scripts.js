@@ -1,10 +1,10 @@
-﻿/**
+/**
  * PORTFOLIO SCRIPT - CARLOS RUBIANO
  * Optimizado y mejorado - Agosto 2026
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== CONFIGURACI�N GLOBAL =====
+    // ===== CONFIGURACIÓN GLOBAL =====
     const config = {
         hexSize: 120,
         scrollOffset: 20,
@@ -22,9 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const MOUSE_THRESHOLD = 5;
 
     // ===== UTILIDADES =====
-    const showFeedback = (elementId, message, type = 'success') => {
+    const showFeedback = (elementId, messageKey, type = 'success') => {
         const el = document.getElementById(elementId);
         if (!el) return;
+        const message = typeof window.i18n !== 'undefined' && window.i18n.t 
+            ? window.i18n.t(messageKey) 
+            : messageKey;
         el.textContent = message;
         el.className = type === 'success' ? 'form-success' : 'form-error';
         el.style.display = 'block';
@@ -34,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     };
 
-    // ===== SISTEMA DE HEX�GONOS INTERACTIVOS =====
+    // ===== SISTEMA DE HEXÁGONOS INTERACTIVOS =====
     const createHexGrid = () => {
         const container = document.getElementById('hexagon-bg');
         if (!container) return;
@@ -105,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 intensity = Math.min(1, intensity * 1.2);
             }
 
-            // Pulso sutil para hex�gonos alejados
+            // Pulso sutil para hexágonos alejados
             const pulse = Math.sin(time * 0.5 + hex.pulseOffset) * 0.02;
             intensity = Math.max(0, intensity + pulse);
 
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ===== ANIMACI�N CONTINUA DE HEX�GONOS =====
+    // ===== ANIMACIÓN CONTINUA DE HEXÁGONOS =====
     const startHexAnimation = () => {
         const animate = () => {
             updateHighlights();
@@ -148,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ===== SISTEMA DE MEN� M�VIL =====
+    // ===== SISTEMA DE MENÚ MÓVIL =====
     const initMobileMenu = () => {
         const menuToggle = document.querySelector('.menu-toggle');
         const headerNav = document.querySelector('.header-nav');
@@ -185,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ===== EFECTOS DE INTERACCI�N =====
+    // ===== EFECTOS DE INTERACCIÓN =====
     const initHoverEffects = () => {
         document.querySelectorAll('.project-card, .skill-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
@@ -205,6 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
+
+    window.initHoverEffects = initHoverEffects;
 
     // ===== INTERSECTION OBSERVER PARA ANIMACIONES =====
     const initScrollAnimations = () => {
@@ -226,47 +231,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ===== CARGA DIN�MICA DE PROYECTOS =====
+    window.initScrollAnimations = initScrollAnimations;
+
+    // ===== CARGA DINÁMICA DE PROYECTOS =====
     const loadProjects = async () => {
-        const grid = document.getElementById('projects-grid');
+        const grid = document.getElementById("projects-grid");
         if (!grid) return;
 
         try {
-            const response = await fetch('projects.json');
-            if (!response.ok) throw new Error('No se pudo cargar projects.json');
+            const response = await fetch("projects.json");
+            if (!response.ok) throw new Error("No se pudo cargar projects.json");
             const data = await response.json();
 
             if (data.projects && Array.isArray(data.projects)) {
-                grid.innerHTML = '';
+                grid.innerHTML = "";
+
+                const currentLang = (typeof window.i18n !== "undefined" && window.i18n.getCurrentLang)
+                    ? window.i18n.getCurrentLang()
+                    : null;
 
                 data.projects.forEach(project => {
-                    const card = document.createElement('div');
-                    card.className = 'project-card';
+                    const card = document.createElement("div");
+                    card.className = "project-card";
+
+                    let texts = project;
+                    if (currentLang && project.translations) {
+                        texts = project.translations[currentLang] || project.translations.es || project;
+                    }
 
                     const techStackHtml = project.stack
                         .map(tech => `<span>${tech}</span>`)
-                        .join('');
+                        .join("");
 
-                    const demoButton = project.demoUrl && project.demoUrl !== '#'
-                        ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">VER_DEMO <i class="fas fa-external-link-alt"></i></a>`
-                        : '';
+                    const demoButton = project.demoUrl && project.demoUrl !== "#"
+                        ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">${window.i18n.t('projects.demo')} <i class="fas fa-external-link-alt"></i></a>`
+                        : "";
 
-                    const codeButton = project.codeUrl && project.codeUrl !== '#'
-                        ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">VER_C�DIGO <i class="fab fa-github"></i></a>`
-                        : '';
+                    const codeButton = project.codeUrl && project.codeUrl !== "#"
+                        ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="neon-button">${window.i18n.t('projects.code')} <i class="fab fa-github"></i></a>`
+                        : "";
 
                     card.innerHTML = `
                         <div class="project-header">
-                            <h3>> ${project.title}</h3>
-                            <div class="tech-tag">${project.tech}</div>
+                            <h3>> ${texts.title}</h3>
+                            <div class="tech-tag">${texts.tech}</div>
                         </div>
-                        <p>${project.description}</p>
+                        <p>${texts.description}</p>
                         <div class="tech-stack">
                             ${techStackHtml}
                         </div>
                         <div class="project-meta">
-                            <span><i class="fas fa-code"></i> Fuente: ${project.source}</span>
-                            <span><i class="fas fa-chart-line"></i> ${project.result}</span>
+                            <span><i class="fas fa-code"></i> Fuente: ${texts.source}</span>
+                            <span><i class="fas fa-chart-line"></i> ${texts.result}</span>
                         </div>
                         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                             ${demoButton}
@@ -278,9 +294,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } catch (error) {
-            console.warn('Usando proyectos hardcodeados como fallback:', error.message);
+            console.warn("Usando proyectos hardcodeados como fallback:", error.message);
+            if (grid.innerHTML.trim() === "") {
+                grid.innerHTML = `
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>> EXTRACCIÓN DE DATOS</h3>
+                            <div class="tech-tag">JAVA</div>
+                        </div>
+                        <p>Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.</p>
+                        <div class="tech-stack">
+                            <span>Java</span><span>Regex</span><span>POI</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code"></i> Fuente: Privada</span>
+                            <span><i class="fas fa-chart-line"></i> +40% eficiencia</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>> OCR TESSERACT</h3>
+                            <div class="tech-tag">JAVA</div>
+                        </div>
+                        <p>Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.</p>
+                        <div class="tech-stack">
+                            <span>Java</span><span>Tesseract OCR</span><span>Image Processing</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code"></i> Fuente: Privada</span>
+                            <span><i class="fas fa-chart-line"></i> +25% conversión</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>> ANALIZADOR DE DATOS</h3>
+                            <div class="tech-tag">PYTHON</div>
+                        </div>
+                        <p>Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.</p>
+                        <div class="tech-stack">
+                            <span>Python</span><span>Pandas</span><span>D3.js</span><span>FastAPI</span>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-code"></i> Uso interno</span>
+                            <span><i class="fas fa-chart-line"></i> Ahorro de 20h/semana</span>
+                        </div>
+                    </div>
+                `;
+            }
         }
     };
+
+    window.loadProjects = loadProjects;
 
     // ===== MANEJO DEL FORMULARIO DE CONTACTO =====
     const handleContactForm = () => {
@@ -294,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const feedbackEl = document.getElementById('form-feedback');
 
             if (!endpoint || endpoint.includes('TU_ENDPOINT_AQUI')) {
-                showFeedback('form-feedback', 'Error: Debes configurar el endpoint de Formspree en el formulario.', 'error');
+                showFeedback('form-feedback', 'feedback.error_endpoint', 'error');
                 return;
             }
 
@@ -315,14 +379,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    showFeedback('form-feedback', 'Mensaje enviado correctamente. Te contactar� pronto.', 'success');
+                    showFeedback('form-feedback', 'feedback.success', 'success');
                     form.reset();
                 } else {
                     const errorData = await response.json().catch(() => ({}));
-                    showFeedback('form-feedback', `Error: ${errorData.message || 'No se pudo enviar el mensaje. Intenta de nuevo.'}`, 'error');
+                    showFeedback('form-feedback', 'feedback.error_generic', 'error');
                 }
             } catch (error) {
-                showFeedback('form-feedback', 'Error de conexi�n. Por favor, intenta de nuevo m�s tarde.', 'error');
+                showFeedback('form-feedback', 'feedback.error_connection', 'error');
             } finally {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
@@ -360,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ===== INICIALIZACI�N =====
+    // ===== INICIALIZACIÓN =====
     const init = () => {
         createHexGrid();
         startHexAnimation();
@@ -416,4 +480,6 @@ if (!Element.prototype.closest) {
         return null;
     };
 }
+
+
 

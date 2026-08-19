@@ -848,8 +848,8 @@ section {
     
     .menu-toggle {
         display: block;
-        right: auto;
-        left: 1rem;
+        right: 1rem;
+        left: auto;
     }
 
     .lang-toggle {
