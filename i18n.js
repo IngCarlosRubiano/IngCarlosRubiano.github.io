@@ -328,7 +328,9 @@
         t,
         switchLang,
         getCurrentLang: () => currentLang,
-        getSupportedLangs: () => CONFIG.supportedLangs
+        getSupportedLangs: \(\) => CONFIG.supportedLangs,
+        applyTranslations,
+        updateLangButton
     };
 
     // Iniciar

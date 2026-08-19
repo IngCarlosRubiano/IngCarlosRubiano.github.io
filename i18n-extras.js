@@ -1,124 +1,124 @@
-ï»¿(function() {
+(function() {
     'use strict';
 
     const extras = {
         es: {
-            'privacy.title': 'POLÃTICA DE PRIVACIDAD',
-            'privacy.section1': '1. INFORMACIÃ“N GENERAL',
-            'privacy.section1_text': 'Carlos Rubiano ("yo", "mi", "mÃ­o") opera el sitio web https://carlosdev000.github.io (el "Servicio"). Esta pÃ¡gina le informa sobre mis polÃ­ticas respecto a la recopilaciÃ³n, uso y divulgaciÃ³n de datos personales cuando utiliza mi Servicio.',
+            'privacy.title': 'POLÍTICA DE PRIVACIDAD',
+            'privacy.section1': '1. INFORMACIÓN GENERAL',
+            'privacy.section1_text': 'Carlos Rubiano ("yo", "mi", "mío") opera el sitio web https://carlosdev000.github.io (el "Servicio"). Esta página le informa sobre mis políticas respecto a la recopilación, uso y divulgación de datos personales cuando utiliza mi Servicio.',
             'privacy.section2': '2. DATOS RECOPILADOS',
             'privacy.voluntary': 'Datos proporcionados voluntariamente:',
-            'privacy.automatic': 'Datos recopilados automÃ¡ticamente:',
-            'privacy.contact_info': 'InformaciÃ³n de contacto:',
-            'privacy.contact_desc': 'Nombre, email y mensaje a travÃ©s del formulario',
+            'privacy.automatic': 'Datos recopilados automáticamente:',
+            'privacy.contact_info': 'Información de contacto:',
+            'privacy.contact_desc': 'Nombre, email y mensaje a través del formulario',
             'privacy.communications': 'Comunicaciones:',
             'privacy.communications_desc': 'Copia de las comunicaciones por email',
-            'privacy.technical': 'Datos tÃ©cnicos:',
-            'privacy.technical_desc': 'DirecciÃ³n IP, tipo de navegador, pÃ¡ginas visitadas',
+            'privacy.technical': 'Datos técnicos:',
+            'privacy.technical_desc': 'Dirección IP, tipo de navegador, páginas visitadas',
             'privacy.cookies': 'Cookies:',
-            'privacy.cookies_desc': 'Datos de analÃ­tica web (Google Analytics)',
+            'privacy.cookies_desc': 'Datos de analítica web (Google Analytics)',
             'privacy.metadata': 'Metadatos:',
-            'privacy.metadata_desc': 'Tiempo de visita, clicks, patrones de navegaciÃ³n',
+            'privacy.metadata_desc': 'Tiempo de visita, clicks, patrones de navegación',
             'privacy.section3': '3. FINALIDAD DEL TRATAMIENTO',
-            'privacy.section4': '4. COOKIES Y TECNOLOGÃAS SIMILARES',
-            'privacy.cookies_intro': 'Utilizo las siguientes categorÃ­as de cookies:',
+            'privacy.section4': '4. COOKIES Y TECNOLOGÍAS SIMILARES',
+            'privacy.cookies_intro': 'Utilizo las siguientes categorías de cookies:',
             'privacy.essential': 'Esenciales:',
-            'privacy.essential_desc': 'Necesarias para el funcionamiento bÃ¡sico',
-            'privacy.analytics': 'AnalÃ­ticas:',
+            'privacy.essential_desc': 'Necesarias para el funcionamiento básico',
+            'privacy.analytics': 'Analíticas:',
             'privacy.analytics_desc': 'Google Analytics para entender el uso del sitio',
             'privacy.functional': 'Funcionales:',
             'privacy.functional_desc': 'Mejoran la experiencia de usuario',
             'privacy.cookies_manage': 'Puede gestionar las cookies',
-            'privacy.cookies_manage_desc': 'desde la configuraciÃ³n de su navegador. Sin cookies esenciales, algunas funciones podrÃ­an no estar disponibles.',
-            'privacy.section5': '5. COMPARTICIÃ“N DE DATOS',
+            'privacy.cookies_manage_desc': 'desde la configuración de su navegador. Sin cookies esenciales, algunas funciones podrían no estar disponibles.',
+            'privacy.section5': '5. COMPARTICIÓN DE DATOS',
             'privacy.sharing_intro': 'Sus datos personales pueden ser compartidos con:',
             'privacy.providers': 'Proveedores de servicios:',
             'privacy.providers_desc': 'Google Analytics, servicios de hosting',
             'privacy.authorities': 'Autoridades legales:',
             'privacy.authorities_desc': 'Cuando sea requerido por ley',
             'privacy.email_providers': 'Proveedores de email:',
-            'privacy.email_providers_desc': 'Servicios de gestiÃ³n de correo',
+            'privacy.email_providers_desc': 'Servicios de gestión de correo',
             'privacy.no_sell': 'No vendo ni alquilo',
             'privacy.no_sell_desc': 'sus datos personales a terceros con fines comerciales.',
             'privacy.section6': '6. SEGURIDAD DE LOS DATOS',
-            'privacy.security_intro': 'Implemento medidas de seguridad tÃ©cnicas y organizativas apropiadas para proteger sus datos personales, incluyendo:',
+            'privacy.security_intro': 'Implemento medidas de seguridad técnicas y organizativas apropiadas para proteger sus datos personales, incluyendo:',
             'privacy.https': 'Conexiones seguras (HTTPS/SSL)',
             'privacy.access': 'Acceso restringido a datos personales',
-            'privacy.reviews': 'Revisiones periÃ³dicas de seguridad',
+            'privacy.reviews': 'Revisiones periódicas de seguridad',
             'privacy.backups': 'Copias de seguridad cifradas',
             'privacy.section7': '7. SUS DERECHOS',
-            'privacy.rights_intro': 'De acuerdo con el RGPD y otras leyes de protecciÃ³n de datos, usted tiene derecho a:',
+            'privacy.rights_intro': 'De acuerdo con el RGPD y otras leyes de protección de datos, usted tiene derecho a:',
             'privacy.access_right': 'Acceso:',
             'privacy.access_right_desc': 'Solicitar una copia de sus datos personales',
-            'privacy.rectification': 'RectificaciÃ³n:',
+            'privacy.rectification': 'Rectificación:',
             'privacy.rectification_desc': 'Corregir datos inexactos',
-            'privacy.deletion': 'EliminaciÃ³n:',
-            'privacy.deletion_desc': 'Solicitar la eliminaciÃ³n de sus datos',
-            'privacy.limitation': 'LimitaciÃ³n:',
+            'privacy.deletion': 'Eliminación:',
+            'privacy.deletion_desc': 'Solicitar la eliminación de sus datos',
+            'privacy.limitation': 'Limitación:',
             'privacy.limitation_desc': 'Restringir el procesamiento de sus datos',
             'privacy.portability': 'Portabilidad:',
             'privacy.portability_desc': 'Recibir sus datos en formato estructurado',
-            'privacy.objection': 'OposiciÃ³n:',
+            'privacy.objection': 'Oposición:',
             'privacy.objection_desc': 'Oponerse al procesamiento de sus datos',
             'privacy.section8': '8. TRANSFERENCIAS INTERNACIONALES',
-            'privacy.transfers_intro': 'Sus datos pueden ser transferidos y procesados en paÃ­ses fuera de su jurisdicciÃ³n, incluyendo Estados Unidos. Aseguramos que estas transferencias cumplan con las leyes aplicables de protecciÃ³n de datos mediante:',
-            'privacy.clauses': 'ClÃ¡usulas contractuales estÃ¡ndar',
-            'privacy.adequacy': 'Decisiones de adecuaciÃ³n de la ComisiÃ³n Europea',
-            'privacy.certifications': 'Certificaciones de privacidad vÃ¡lidas',
-            'privacy.section9': '9. CONSERVACIÃ“N DE DATOS',
+            'privacy.transfers_intro': 'Sus datos pueden ser transferidos y procesados en países fuera de su jurisdicción, incluyendo Estados Unidos. Aseguramos que estas transferencias cumplan con las leyes aplicables de protección de datos mediante:',
+            'privacy.clauses': 'Cláusulas contractuales estándar',
+            'privacy.adequacy': 'Decisiones de adecuación de la Comisión Europea',
+            'privacy.certifications': 'Certificaciones de privacidad válidas',
+            'privacy.section9': '9. CONSERVACIÓN DE DATOS',
             'privacy.retention_intro': 'Conservamos sus datos personales solo durante el tiempo necesario para los fines descritos:',
             'privacy.contact_data': 'Datos de contacto:',
-            'privacy.contact_data_desc': '2 aÃ±os desde la Ãºltima comunicaciÃ³n',
-            'privacy.analytics_data': 'Datos analÃ­ticos:',
+            'privacy.contact_data_desc': '2 años desde la última comunicación',
+            'privacy.analytics_data': 'Datos analíticos:',
             'privacy.analytics_data_desc': '26 meses (Google Analytics)',
             'privacy.cookies_data': 'Cookies:',
-            'privacy.cookies_data_desc': 'SegÃºn la duraciÃ³n de cada cookie',
-            'privacy.section10': '10. CAMBIOS EN ESTA POLÃTICA',
-            'privacy.changes_intro': 'Puedo actualizar esta PolÃ­tica de Privacidad periÃ³dicamente. Le notificarÃ© sobre cualquier cambio:',
-            'privacy.change1': 'Publicando la nueva polÃ­tica en esta pÃ¡gina',
-            'privacy.change2': 'Actualizando la fecha de "Ãºltima actualizaciÃ³n"',
-            'privacy.change3': 'Enviando una notificaciÃ³n por email (si procede)',
+            'privacy.cookies_data_desc': 'Según la duración de cada cookie',
+            'privacy.section10': '10. CAMBIOS EN ESTA POLÍTICA',
+            'privacy.changes_intro': 'Puedo actualizar esta Política de Privacidad periódicamente. Le notificaré sobre cualquier cambio:',
+            'privacy.change1': 'Publicando la nueva política en esta página',
+            'privacy.change2': 'Actualizando la fecha de "última actualización"',
+            'privacy.change3': 'Enviando una notificación por email (si procede)',
             'privacy.contact_title': 'CONTACTO',
             'privacy.contact_desc': 'Para ejercer sus derechos o preguntas sobre privacidad:',
             'privacy.response_time': 'Tiempo de respuesta:',
-            'privacy.did_you_know': 'Â¿SabÃ­a que?',
-            'privacy.did_you_know_desc': 'Esta polÃ­tica cumple con el RGPD (UE), LGPD (Brasil), CCPA/CPRA (California) y otras leyes internacionales de protecciÃ³n de datos.',
+            'privacy.did_you_know': '¿Sabía que?',
+            'privacy.did_you_know_desc': 'Esta política cumple con el RGPD (UE), LGPD (Brasil), CCPA/CPRA (California) y otras leyes internacionales de protección de datos.',
             'privacy.back': 'Volver al Portafolio',
             
-            'terms.title': 'TÃ‰RMINOS DE USO',
-            'terms.section1': '1. ACEPTACIÃ“N DE TÃ‰RMINOS',
-            'terms.section1_text': 'Al acceder y utilizar el portafolio de Carlos Rubiano (https://carlosdev000.github.io), usted acepta cumplir con estos tÃ©rminos de uso y todas las leyes y regulaciones aplicables.',
+            'terms.title': 'TÉRMINOS DE USO',
+            'terms.section1': '1. ACEPTACIÓN DE TÉRMINOS',
+            'terms.section1_text': 'Al acceder y utilizar el portafolio de Carlos Rubiano (https://carlosdev000.github.io), usted acepta cumplir con estos términos de uso y todas las leyes y regulaciones aplicables.',
             'terms.section2': '2. PROPIEDAD INTELECTUAL',
             'terms.section3': '3. USO PERMITIDO',
             'terms.use1': 'Ver y descargar el contenido para referencia personal',
             'terms.use2': 'Compartir enlaces al sitio web',
             'terms.use3': 'Contactar para oportunidades profesionales',
             'terms.section4': '4. USO PROHIBIDO',
-            'terms.prohibited1': 'Copiar o redistribuir el contenido sin autorizaciÃ³n',
-            'terms.prohibited2': 'Utilizar el cÃ³digo fuente para proyectos comerciales',
+            'terms.prohibited1': 'Copiar o redistribuir el contenido sin autorización',
+            'terms.prohibited2': 'Utilizar el código fuente para proyectos comerciales',
             'terms.prohibited3': 'Modificar o alterar cualquier contenido del sitio',
             'terms.prohibited4': 'Usar el sitio para actividades ilegales',
             'terms.section5': '5. CONTENIDO DE TERCEROS',
-            'terms.section6': '6. LIMITACIÃ“N DE RESPONSABILIDAD',
-            'terms.limit1': 'DaÃ±os resultantes del uso o incapacidad de uso del sitio',
+            'terms.section6': '6. LIMITACIÓN DE RESPONSABILIDAD',
+            'terms.limit1': 'Daños resultantes del uso o incapacidad de uso del sitio',
             'terms.limit2': 'Contenido en sitios enlazados externamente',
-            'terms.limit3': 'Errores tÃ©cnicos o interrupciones del servicio',
+            'terms.limit3': 'Errores técnicos o interrupciones del servicio',
             'terms.section7': '7. MODIFICACIONES',
             'terms.section8': '8. CONTACTO',
-            'terms.contact': 'Para preguntas sobre estos tÃ©rminos, contactar a: carlos.rubiano.olaya@gmail.com',
+            'terms.contact': 'Para preguntas sobre estos términos, contactar a: carlos.rubiano.olaya@gmail.com',
             'terms.back': 'Volver al Portafolio',
             
             'sitemap.title': 'MAPA DEL SITIO',
-            'sitemap.main_pages': 'PÃ¡ginas Principales',
+            'sitemap.main_pages': 'Páginas Principales',
             'sitemap.home': 'Inicio - Portafolio Principal',
-            'sitemap.about': 'SecciÃ³n Sobre MÃ­',
-            'sitemap.projects': 'SecciÃ³n Proyectos',
-            'sitemap.skills': 'SecciÃ³n Habilidades',
-            'sitemap.experience': 'SecciÃ³n Experiencia',
-            'sitemap.contact': 'SecciÃ³n Contacto',
+            'sitemap.about': 'Sección Sobre Mí',
+            'sitemap.projects': 'Sección Proyectos',
+            'sitemap.skills': 'Sección Habilidades',
+            'sitemap.experience': 'Sección Experiencia',
+            'sitemap.contact': 'Sección Contacto',
             'sitemap.legal': 'Documentos Legales',
-            'sitemap.privacy': 'PolÃ­tica de Privacidad',
-            'sitemap.terms': 'TÃ©rminos de Uso',
+            'sitemap.privacy': 'Política de Privacidad',
+            'sitemap.terms': 'Términos de Uso',
             'sitemap.external': 'Enlaces Externos',
             'sitemap.linkedin': 'Perfil de LinkedIn',
             'sitemap.github': 'Perfil de GitHub',
@@ -248,12 +248,38 @@
         }
     };
 
-    if (window.i18n && window.i18n.t) {
-        Object.keys(extras).forEach(lang => {
-            if (!window.i18n.translations[lang]) {
-                window.i18n.translations[lang] = {};
+    function initExtras() {
+        if (window.i18n && window.i18n.t) {
+            Object.keys(extras).forEach(lang => {
+                if (!window.i18n.translations[lang]) {
+                    window.i18n.translations[lang] = {};
+                }
+                Object.assign(window.i18n.translations[lang], extras[lang]);
+            });
+            
+            // Re-aplicar traducciones después de fusionar
+            if (typeof window.i18n.applyTranslations === "function") {
+                window.i18n.applyTranslations();
             }
-            Object.assign(window.i18n.translations[lang], extras[lang]);
-        });
+        }
     }
-})();
+    
+    // Intentar inmediatamente
+    initExtras();
+    
+    // Si i18n no está listo, esperar hasta que lo esté
+    if (!window.i18n || !window.i18n.t) {
+        const checkInterval = setInterval(() => {
+            initExtras();
+            if (window.i18n && window.i18n.t) {
+                clearInterval(checkInterval);
+            }
+        }, 50);
+        
+        // También intentar cuando el DOM esté listo
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", () => {
+                setTimeout(initExtras, 0);
+            });
+        }
+    }
