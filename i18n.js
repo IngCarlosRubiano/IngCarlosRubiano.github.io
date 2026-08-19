@@ -1,12 +1,12 @@
 /**
  * I18N SYSTEM - CARLOS RUBIANO PORTFOLIO
- * Detecci�n autom�tica de idioma + selector manual
+ * Detección automática de idioma + selector manual
  */
 
 (function() {
     'use strict';
 
-    // ===== CONFIGURACI�N =====
+    // ===== CONFIGURACIÓN =====
     const CONFIG = {
         defaultLang: 'es',
         storageKey: 'portfolio-lang',
@@ -17,30 +17,30 @@
     const translations = {
         es: {
             // Header
-            'nav.about': 'SOBRE M�',
+            'nav.about': 'SOBRE MÍ',
             'nav.projects': 'PROYECTOS',
             'nav.skills': 'HABILIDADES',
             'nav.experience': 'EXPERIENCIA',
             'nav.contact': 'CONTACTO',
             'header.subtitle': 'INGENIERO DE SOFTWARE | DESARROLLADOR BACKEND',
-            'header.description': 'Apasionado por la tecnolog�a y la resoluci�n de problemas a trav�s del desarrollo de software. Me especializo en backend y administraci�n de entornos Linux, con un enfoque en crear soluciones eficientes y escalables.',
+            'header.description': 'Apasionado por la tecnología y la resolución de problemas a través del desarrollo de software. Me especializo en backend y administración de entornos Linux, con un enfoque en crear soluciones eficientes y escalables.',
             
             // About
-            'about.title': 'SOBRE M�',
-            'about.text1': 'Soy estudiante de los �ltimos semestres de Ingenier�a Telem�tica y tecn�logo en Sistematizaci�n de Datos, con experiencia en el dise�o, desarrollo e implementaci�n de aplicaciones inform�ticas.',
+            'about.title': 'SOBRE MÍ',
+            'about.text1': 'Soy estudiante de los últimos semestres de Ingeniería Telemática y tecnólogo en Sistematización de Datos, con experiencia en el diseño, desarrollo e implementación de aplicaciones informáticas.',
             'about.highlights': 'Me destaco por:',
-            'about.item1': 'Habilidades en programaci�n backend y manejo de bases de datos.',
-            'about.item2': 'Experiencia en administraci�n de entornos Linux y validaci�n de plataformas empresariales.',
-            'about.item3': 'Una mentalidad anal�tica y autodidacta, siempre en b�squeda de aprender y aplicar nuevas tecnolog�as.',
+            'about.item1': 'Habilidades en programación backend y manejo de bases de datos.',
+            'about.item2': 'Experiencia en administración de entornos Linux y validación de plataformas empresariales.',
+            'about.item3': 'Una mentalidad analítica y autodidacta, siempre en búsqueda de aprender y aplicar nuevas tecnologías.',
             'about.item4': 'Capacidad de trabajo en equipo y liderazgo en proyectos interdisciplinarios.',
             
             // Projects
             'projects.title': 'PROYECTOS',
             'projects.demo': 'VER_DEMO',
-            'projects.code': 'VER_C�DIGO',
+            'projects.code': 'VER_CÓDIGO',
             
             // Skills
-            'skills.title': 'HABILIDADES T�CNICAS',
+            'skills.title': 'HABILIDADES TÉCNICAS',
             
             // Experience
             'experience.title': 'EXPERIENCIA PROFESIONAL',
@@ -52,23 +52,23 @@
             'contact.email': 'EMAIL',
             'contact.email_placeholder': 'Ej: carlos@ejemplo.com',
             'contact.message': 'MENSAJE',
-            'contact.message_placeholder': 'Escribe tu mensaje aqu�...',
+            'contact.message_placeholder': 'Escribe tu mensaje aquí...',
             'contact.submit': 'ENVIAR MENSAJE',
             'contact.sending': 'ENVIANDO...',
-            'contact.find_me': 'ENCU�NTRAME EN:',
-            'contact.footer_button': 'Cont�ctame',
+            'contact.find_me': 'ENCUÉNTRAME EN:',
+            'contact.footer_button': 'Contáctame',
             
             // Footer
             'footer.rights': 'Todos los derechos reservados.',
-            'footer.privacy': 'Pol�tica de privacidad',
-            'footer.terms': 'T�rminos de uso',
+            'footer.privacy': 'Política de privacidad',
+            'footer.terms': 'Términos de uso',
             'footer.sitemap': 'Mapa del sitio',
             
             // Feedback
-            'feedback.success': 'Mensaje enviado correctamente. Te contactar� pronto.',
+            'feedback.success': 'Mensaje enviado correctamente. Te contactaré pronto.',
             'feedback.error_endpoint': 'Error: Debes configurar el endpoint de Formspree en el formulario.',
             'feedback.error_generic': 'Error: No se pudo enviar el mensaje. Intenta de nuevo.',
-            'feedback.error_connection': 'Error de conexi�n. Por favor, intenta de nuevo m�s tarde.',
+            'feedback.error_connection': 'Error de conexión. Por favor, intenta de nuevo más tarde.',
             
             // Language selector
             'lang.es': 'ES',
@@ -164,7 +164,7 @@
             return langCode;
         }
         
-        // Si el idioma del navegador no es soportado, usar espa�ol por defecto
+        // Si el idioma del navegador no es soportado, usar español por defecto
         return CONFIG.defaultLang;
     }
 
@@ -178,7 +178,7 @@
         }
     }
 
-    // ===== TRADUCCI�N =====
+    // ===== TRADUCCIÓN =====
     function t(key) {
         const langData = translations[currentLang] || translations[CONFIG.defaultLang];
         return langData[key] || key;
@@ -215,7 +215,7 @@
             }
         });
 
-        // Actualizar bot�n de idioma
+        // Actualizar botón de idioma
         updateLangButton();
         
         // Actualizar atributo lang del HTML
@@ -241,7 +241,7 @@
         storeLang(currentLang);
         applyTranslations();
         
-        // Re-renderizar proyectos si est�n cargados
+        // Re-renderizar proyectos si están cargados
         if (typeof window.loadProjects === 'function') {
             window.loadProjects();
         }
@@ -272,7 +272,7 @@
     }
 
     function initLangButton() {
-        // Remover bot�n existente si hay
+        // Remover botón existente si hay
         const existing = document.getElementById('lang-toggle');
         if (existing) existing.remove();
         
@@ -285,11 +285,11 @@
         }
     }
 
-    // ===== INICIALIZACI�N =====
+    // ===== INICIALIZACIÓN =====
     function init() {
         initLang();
         
-        // Esperar a que el DOM est� listo si ya carg�
+        // Esperar a que el DOM esté listo si ya cargó
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 applyTranslations();
