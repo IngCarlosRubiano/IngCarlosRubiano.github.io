@@ -38,6 +38,22 @@
             'projects.title': 'PROYECTOS',
             'projects.demo': 'VER_DEMO',
             'projects.code': 'VER_CÓDIGO',
+'projects.fallback_title1': 'EXTRACCIÓN DE DATOS',
+            'projects.fallback_desc1': 'Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.',
+            'projects.fallback_tech1': 'JAVA',
+            'projects.fallback_source1': 'Privada',
+            'projects.fallback_result1': '+40% eficiencia',
+            'projects.fallback_title2': 'OCR TESSERACT',
+            'projects.fallback_desc2': 'Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.',
+            'projects.fallback_tech2': 'JAVA',
+            'projects.fallback_source2': 'Privada',
+            'projects.fallback_result2': '+25% conversión',
+            'projects.fallback_title3': 'ANALIZADOR DE DATOS',
+            'projects.fallback_desc3': 'Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.',
+            'projects.fallback_tech3': 'PYTHON',
+            'projects.fallback_source3': 'Uso interno',
+            'projects.fallback_result3': 'Ahorro de 20h/semana',
+            
             
             // Skills
             'skills.title': 'HABILIDADES TÉCNICAS',
@@ -109,6 +125,22 @@
             'projects.title': 'PROJECTS',
             'projects.demo': 'VIEW_DEMO',
             'projects.code': 'VIEW_CODE',
+'projects.fallback_title1': 'DATA EXTRACTION',
+            'projects.fallback_desc1': 'Research and development of solutions to extract information from documents in various formats, applying Java programming techniques.',
+            'projects.fallback_tech1': 'JAVA',
+            'projects.fallback_source1': 'Private',
+            'projects.fallback_result1': '+40% efficiency',
+            'projects.fallback_title2': 'OCR TESSERACT',
+            'projects.fallback_desc2': 'Implementation of a document digitization system using OCR, integrating Tesseract in Java environments.',
+            'projects.fallback_tech2': 'JAVA',
+            'projects.fallback_source2': 'Private',
+            'projects.fallback_result2': '+25% conversion',
+            'projects.fallback_title3': 'DATA ANALYZER',
+            'projects.fallback_desc3': 'Data analysis tool for processing large volumes of information with interactive visualizations and automated reports.',
+            'projects.fallback_tech3': 'PYTHON',
+            'projects.fallback_source3': 'Internal use',
+            'projects.fallback_result3': '20h/week savings',
+            
             
             // Skills
             'skills.title': 'TECHNICAL SKILLS',
@@ -262,6 +294,11 @@
         currentLang = newLang;
         storeLang(currentLang);
         applyTranslations();
+
+        const grid = document.getElementById("projects-grid");
+        if (grid) {
+            grid.innerHTML = "";
+        }
         
         // Re-renderizar proyectos si están cargados
         if (typeof window.loadProjects === 'function') {
@@ -328,11 +365,13 @@
         t,
         switchLang,
         getCurrentLang: () => currentLang,
-        getSupportedLangs: \(\) => CONFIG.supportedLangs,
+        getSupportedLangs: () => CONFIG.supportedLangs,
         applyTranslations,
-        updateLangButton
+        updateLangButton,
+        translations
     };
 
     // Iniciar
     init();
 })();
+

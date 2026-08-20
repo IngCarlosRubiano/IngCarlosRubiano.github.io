@@ -233,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.initScrollAnimations = initScrollAnimations;
 
-    // ===== CARGA DINÁMICA DE PROYECTOS =====
     const loadProjects = async () => {
         const grid = document.getElementById("projects-grid");
         if (!grid) return;
@@ -246,13 +245,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.projects && Array.isArray(data.projects)) {
                 grid.innerHTML = "";
 
-                const currentLang = (typeof window.i18n !== "undefined" && window.i18n.getCurrentLang)
-                    ? window.i18n.getCurrentLang()
-                    : null;
-
                 data.projects.forEach(project => {
                     const card = document.createElement("div");
                     card.className = "project-card";
+
+                    const currentLang = (typeof window.i18n !== "undefined" && window.i18n.getCurrentLang)
+                        ? window.i18n.getCurrentLang()
+                        : null;
 
                     let texts = project;
                     if (currentLang && project.translations) {
@@ -295,48 +294,51 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             console.warn("Usando proyectos hardcodeados como fallback:", error.message);
+            if (grid) {
+                grid.innerHTML = "";
+            }
             if (grid.innerHTML.trim() === "") {
                 grid.innerHTML = `
                     <div class="project-card">
                         <div class="project-header">
-                            <h3>> EXTRACCIÓN DE DATOS</h3>
-                            <div class="tech-tag">JAVA</div>
+                            <h3>> ${window.i18n.t('projects.fallback_title1')}</h3>
+                            <div class="tech-tag">${window.i18n.t('projects.fallback_tech1')}</div>
                         </div>
-                        <p>Investigación y desarrollo de soluciones para extraer información de documentos en diversos formatos, aplicando técnicas de programación en Java.</p>
+                        <p>${window.i18n.t('projects.fallback_desc1')}</p>
                         <div class="tech-stack">
                             <span>Java</span><span>Regex</span><span>POI</span>
                         </div>
                         <div class="project-meta">
-                            <span><i class="fas fa-code"></i> Fuente: Privada</span>
-                            <span><i class="fas fa-chart-line"></i> +40% eficiencia</span>
+                            <span><i class="fas fa-code"></i> Fuente: ${window.i18n.t('projects.fallback_source1')}</span>
+                            <span><i class="fas fa-chart-line"></i> ${window.i18n.t('projects.fallback_result1')}</span>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <h3>> OCR TESSERACT</h3>
-                            <div class="tech-tag">JAVA</div>
+                            <h3>> ${window.i18n.t('projects.fallback_title2')}</h3>
+                            <div class="tech-tag">${window.i18n.t('projects.fallback_tech2')}</div>
                         </div>
-                        <p>Implementación de un sistema de digitalización de documentos mediante OCR, integrando Tesseract en entornos Java.</p>
+                        <p>${window.i18n.t('projects.fallback_desc2')}</p>
                         <div class="tech-stack">
                             <span>Java</span><span>Tesseract OCR</span><span>Image Processing</span>
                         </div>
                         <div class="project-meta">
-                            <span><i class="fas fa-code"></i> Fuente: Privada</span>
-                            <span><i class="fas fa-chart-line"></i> +25% conversión</span>
+                            <span><i class="fas fa-code"></i> Fuente: ${window.i18n.t('projects.fallback_source2')}</span>
+                            <span><i class="fas fa-chart-line"></i> ${window.i18n.t('projects.fallback_result2')}</span>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <h3>> ANALIZADOR DE DATOS</h3>
-                            <div class="tech-tag">PYTHON</div>
+                            <h3>> ${window.i18n.t('projects.fallback_title3')}</h3>
+                            <div class="tech-tag">${window.i18n.t('projects.fallback_tech3')}</div>
                         </div>
-                        <p>Herramienta de análisis de datos para procesamiento de grandes volúmenes de información con visualizaciones interactivas y reportes automatizados.</p>
+                        <p>${window.i18n.t('projects.fallback_desc3')}</p>
                         <div class="tech-stack">
                             <span>Python</span><span>Pandas</span><span>D3.js</span><span>FastAPI</span>
                         </div>
                         <div class="project-meta">
-                            <span><i class="fas fa-code"></i> Uso interno</span>
-                            <span><i class="fas fa-chart-line"></i> Ahorro de 20h/semana</span>
+                            <span><i class="fas fa-code"></i> Fuente: ${window.i18n.t('projects.fallback_source3')}</span>
+                            <span><i class="fas fa-chart-line"></i> ${window.i18n.t('projects.fallback_result3')}</span>
                         </div>
                     </div>
                 `;
@@ -480,6 +482,7 @@ if (!Element.prototype.closest) {
         return null;
     };
 }
+
 
 
 

@@ -196,9 +196,9 @@ header {
     border-bottom: 1px solid var(--color-primary);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     height: auto;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
     box-sizing: border-box;
-    min-height: 80px;
+    min-height: 40px;
     display: flex;
     align-items: center;
 }
@@ -207,7 +207,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -219,17 +219,17 @@ header {
 header h1 {
     font-family: var(--font-primary);
     color: var(--color-text-highlight);
-    font-size: clamp(1.3rem, 4vw, 2.5rem);
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px var(--color-primary);
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--color-primary);
+    margin-bottom: 0.1rem;
 }
 
 header p {
     font-family: var(--font-secondary);
     color: var(--color-secondary);
-    font-size: clamp(0.8rem, 2vw, 1.1rem);    
-    margin-bottom: 1rem;
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);    
+    margin-bottom: 0.3rem;
 }
 
 .header-nav {
@@ -375,7 +375,7 @@ section {
     justify-content: space-between;
     align-items: flex-start;
     gap: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     flex-wrap: wrap;
 }
 
@@ -404,7 +404,7 @@ section {
 }
 
 .project-card p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     line-height: 1.6;
     flex: 1;
     min-height: 0;
@@ -595,7 +595,7 @@ section {
     letter-spacing: 1px;
     transition: all 0.3s ease;
     cursor: pointer;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
     white-space: nowrap;
 }
 
@@ -799,7 +799,7 @@ section {
 .lang-toggle {
     position: absolute;
     right: 1rem;
-    top: 0.5rem;
+    top: 0.3rem;
     transform: none;
     background: transparent;
     border: 1px solid var(--color-primary);
@@ -843,7 +843,7 @@ section {
     }
     
     main {
-        padding-top: 100px;
+        padding-top: 60px;
     }
     
     .menu-toggle {
@@ -855,7 +855,7 @@ section {
     .lang-toggle {
         right: 1rem;
         left: auto;
-        top: 0.5rem;
+        top: 0.3rem;
         transform: none;
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
@@ -926,9 +926,9 @@ section {
     }
     
     header {
-        padding: 0.3rem 0;
+        padding: 0.2rem 0;
         min-height: 70px;
-        padding: 0.5rem 0;
+        padding: 0.2rem 0;
     }
 
     .menu-toggle {
@@ -992,8 +992,8 @@ section {
     }
     
     header h1 {
-        font-size: 1.2rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
     }
     
     header p {
@@ -1006,7 +1006,7 @@ section {
     }
     
     main {
-        padding-top: 90px;
+        padding-top: 60px;
     }
     
     .neural-section {
@@ -1294,5 +1294,7 @@ section {
     background: var(--color-primary);
     color: var(--color-bg);
 }
+
+
 
 
